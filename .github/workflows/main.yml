@@ -1,0 +1,51 @@
+name: Auto-generate Toffee Files
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyzipper
+
+      - name: Extract protected app.zip with pyzipper
+        env:
+          ZIP_PWD: ${{ secrets.ZIP_PWD }}
+        run: |
+          python run.py
+
+      - name: Run script to generate files
+        run: |
+         
+          python app.py
+
+      - name: Commit and push changes
+        env:
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add cookie.json ns.m3u ott.m3u channels.json tengo.json || true
+          git commit -m "Auto update all data $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push https://x-access-token:${GIT_TOKEN}@github.com/${{ github.repository }} HEAD:main
