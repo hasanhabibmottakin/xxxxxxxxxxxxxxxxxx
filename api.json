@@ -42,24 +42,10 @@
     "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
   },
   {
-    "category_name": "Sports",
-    "name": "Toffee sports",
-    "logo": "https://assets-prod.services.toffeelive.com/f_png,w_300,q_85/d60Vs5UBrjBfS2_RV_YV/posters/3cc5bf1e-5a42-415c-8e0e-7a17a1bb64da.png",
-    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/sports_highlights/playlist.m3u8",
-    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
-  },
-  {
     "category_name": "Movies",
     "name": "Sony MAX HD",
     "logo": "https://assets-prod.services.toffeelive.com/f_png,w_300,q_85/Ai51-JQBv9knK3AH_jWs/posters/663e52a6-1a9f-4458-b4aa-7c03d84972f1.webp",
     "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/sony_max_hd/playlist.m3u8",
-    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
-  },
-  {
-    "category_name": "Sports",
-    "name": "PSL Highlights ",
-    "logo": "https://assets-prod.services.toffeelive.com/f_png,w_300,q_85/Ns04LZYBtpl-Sbt7yKqD/posters/fef0cade-0663-4fc7-afb3-7a0b7469d045.png",
-    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/psl_highlights/playlist.m3u8",
     "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
   },
   {
@@ -179,13 +165,6 @@
     "name": "Zee Bangla",
     "logo": "https://assets-prod.services.toffeelive.com/f_png,w_300,q_85/kK2aX5UBrjBfS2_RBcKf/posters/16e111ed-2335-4391-9618-f840e4c4a6a2.png",
     "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/zee_bangla/playlist.m3u8",
-    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
-  },
-  {
-    "category_name": "Drama",
-    "name": "Sony Aath",
-    "logo": "https://assets-prod.services.toffeelive.com/f_png,w_300,q_85/xi6xX5UBv9knK3AH9aMk/posters/f4db1c12-b10f-46e8-a09b-e0efb8820970.png",
-    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/sonyaath/playlist.m3u8",
     "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
   },
   {
