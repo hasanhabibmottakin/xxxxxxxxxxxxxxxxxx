@@ -7,6 +7,20 @@
     "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
   },
   {
+    "category_name": "Bangladeshi",
+    "name": "Somoy TV",
+    "logo": "https://assets-prod.services.toffeelive.com//f_webp,w_1600,q_75/Xi_Ga5oBNnOkwJLWkhKP/posters/ef2899d5-1ae0-4fee-aee5-45f9b0b3ba80.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/somoy_tv/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
+    "name": "Ekattor TV",
+    "logo": "https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/PS_La5oBNnOkwJLWLRN_/posters/e8c444fd-ee3b-4bf3-bb0a-f969bc295f82.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
     "category_name": "Premium",
     "name": "BFL | Live 1",
     "logo": "https://assets-prod.services.toffeelive.com/HHnAgJkBcqxnFHJBabwO/posters/a2cabad4-ab24-4cd3-80ef-ffd74a016393.png",
