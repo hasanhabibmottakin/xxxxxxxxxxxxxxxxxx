@@ -2,7 +2,7 @@
   "name": "Toffee App All Channel Link with Headers",
   "owner": "Bd Coder Boy \nTelegram: https://t.me/fredflixceo",
   "channels_amount": 53,
-  "updated_on": "17-11-2025 10:27:37 AM",
+  "updated_on": "17-11-2025 10:48:43 AM",
   "channels": [
     {
       "category_name": "Premium",
@@ -10,7 +10,7 @@
       "link": "https://mprod-cdn.toffeelive.com/live/match-asiacup/index.m3u8",
       "headers": {
         "Host": "mprod-cdn.toffeelive.com",
-        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763425657:KeyName=prod_live_events:Signature=23BwJRqHSqWImQ-fDuRD-phYaeSzGIm3aDKirCaUfxYrc0DiDsAV5an9U3rrA6zn2_oGJvi19N9dUJz1yysODw",
+        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763426923:KeyName=prod_live_events:Signature=BVe1bQb0VTfEiOey53UvAE4CYCNYm5gRD34tVq4gxwVzutA0PdXOc7OWJj2fd4bhzRYwXI3YAEJIJnTv3-C5CA",
         "user-agent": "Toffee (Linux;Android 14)",
         "accept-encoding": "gzip"
       },
@@ -22,7 +22,7 @@
       "link": "https://mprod-cdn.toffeelive.com/live/match-asiacup-2/index.m3u8",
       "headers": {
         "Host": "mprod-cdn.toffeelive.com",
-        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763425657:KeyName=prod_live_events:Signature=23BwJRqHSqWImQ-fDuRD-phYaeSzGIm3aDKirCaUfxYrc0DiDsAV5an9U3rrA6zn2_oGJvi19N9dUJz1yysODw",
+        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763426923:KeyName=prod_live_events:Signature=BVe1bQb0VTfEiOey53UvAE4CYCNYm5gRD34tVq4gxwVzutA0PdXOc7OWJj2fd4bhzRYwXI3YAEJIJnTv3-C5CA",
         "user-agent": "Toffee (Linux;Android 14)",
         "accept-encoding": "gzip"
       },
@@ -58,7 +58,7 @@
       "link": "https://mprod-cdn.toffeelive.com/live/match-11/index.m3u8",
       "headers": {
         "Host": "mprod-cdn.toffeelive.com",
-        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763425657:KeyName=prod_live_events:Signature=23BwJRqHSqWImQ-fDuRD-phYaeSzGIm3aDKirCaUfxYrc0DiDsAV5an9U3rrA6zn2_oGJvi19N9dUJz1yysODw",
+        "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1763426923:KeyName=prod_live_events:Signature=BVe1bQb0VTfEiOey53UvAE4CYCNYm5gRD34tVq4gxwVzutA0PdXOc7OWJj2fd4bhzRYwXI3YAEJIJnTv3-C5CA",
         "user-agent": "Toffee (Linux;Android 14)",
         "accept-encoding": "gzip"
       },
