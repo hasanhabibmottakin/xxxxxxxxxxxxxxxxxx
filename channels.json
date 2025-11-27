@@ -2,28 +2,28 @@
   "name": "Toffee App All Channel Link with Headers",
   "owner": "BD Cooder Boy \nTelegram: https://t.me/fredflixceo",
   "channels_amount": 54,
-  "updated_on": "27-11-2025 05:41 PM",
+  "updated_on": "27-11-2025 05:44 PM",
   "channels": [
     {
       "category_name": "Premium",
       "name": "BD vs IRE ",
       "logo": "https://assets-prod.services.toffeelive.com//ty_tbJoBNnOkwJLWsRZG/posters/5e49e175-0e7c-4af4-be13-6711e59d448d.png",
       "link": "https://mprod-cdn.toffeelive.com/live/match-asiacup/index.m3u8",
-      "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764315686:KeyName=prod_live_events:Signature=F-eWTISuveWh3UQbXDYMnvxOPlXnmowTUsKVDy8IWS1TrP6GDVSSlqXobCU0Dpg407MST2DBFlZ4LpNUEK9PAw"
+      "cookie": null
     },
     {
       "category_name": "Premium",
       "name": "IND vs SA ",
       "logo": "https://assets-prod.services.toffeelive.com//TSK2e5oBEef-9-uVH5vw/posters/5cc6444f-88c9-4a08-a934-39588cec6040.png",
       "link": "https://mprod-cdn.toffeelive.com/live/match-asiacup-2/index.m3u8",
-      "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764315686:KeyName=prod_live_events:Signature=F-eWTISuveWh3UQbXDYMnvxOPlXnmowTUsKVDy8IWS1TrP6GDVSSlqXobCU0Dpg407MST2DBFlZ4LpNUEK9PAw"
+      "cookie": null
     },
     {
       "category_name": "Premium",
       "name": "Bangladesh Tri Nation's Cup | Live ",
       "logo": "https://assets-prod.services.toffeelive.com/w_640,q_75,f_webp/WHrpv5oBcqxnFHJBa-I5/posters/92f0b998-8603-495b-88c5-7348ae3a9d80.png",
       "link": "https://mprod-cdn.toffeelive.com/live/match-20/index.m3u8",
-      "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764315686:KeyName=prod_live_events:Signature=F-eWTISuveWh3UQbXDYMnvxOPlXnmowTUsKVDy8IWS1TrP6GDVSSlqXobCU0Dpg407MST2DBFlZ4LpNUEK9PAw"
+      "cookie": null
     },
     {
       "category_name": "Bangladeshi",
@@ -44,7 +44,7 @@
       "name": "BFL | Live 1",
       "logo": "https://assets-prod.services.toffeelive.com/HHnAgJkBcqxnFHJBabwO/posters/a2cabad4-ab24-4cd3-80ef-ffd74a016393.png",
       "link": "https://mprod-cdn.toffeelive.com/live/match-11/index.m3u8",
-      "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764315686:KeyName=prod_live_events:Signature=F-eWTISuveWh3UQbXDYMnvxOPlXnmowTUsKVDy8IWS1TrP6GDVSSlqXobCU0Dpg407MST2DBFlZ4LpNUEK9PAw"
+      "cookie": null
     },
     {
       "category_name": "Adventure",
