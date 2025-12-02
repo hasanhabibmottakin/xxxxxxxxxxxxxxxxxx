@@ -1,4 +1,4 @@
 {
-  "toffee": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1764833142:KeyName=prod_linear:Signature=6I7MuRd6cK4hCOLJ6j4RZewpsbSgEYieeM6ubVrw4-USLb39PR3zZ8JJyE1g2PSLF792My5YRUny9-YEMZspBg",
-  "epl": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764710742:KeyName=prod_live_events:Signature=qnvdrJsuwmOMhy0_szZ8-3PmQxe_xnO6-Vvs3pdWZhvqcmVrEgnCYbSEwCYZEYeg5KKzx7XLwPYl1L8L3NdcCA"
+  "toffee": null,
+  "epl": null
 }
