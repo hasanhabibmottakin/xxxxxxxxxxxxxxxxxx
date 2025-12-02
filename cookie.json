@@ -1,4 +1,4 @@
 {
-  "toffee": null,
-  "epl": null
+  "toffee": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1764837322:KeyName=prod_linear:Signature=Idp1DbxshMWUa4moiJni0dLH3AGd0VizbBstSqjj6pfxJdsGrGUMIsZzF7KvCb0KTUZ6NQiKJwNiTWNxiM_IAw",
+  "epl": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1764714923:KeyName=prod_live_events:Signature=CwuJq4-SRtEvFFE-3qUSIVXHEGNJhzIJKXdY_unpcy2CvJ5t9MZWAL96y2-h1Ohl7e8N2I-c-pGvMzHeoQNlCA"
 }
