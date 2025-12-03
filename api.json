@@ -29,6 +29,41 @@
   },
   {
     "category_name": "Bangladeshi",
+    "name": "Channel i",
+    "logo": "https://assets-prod.services.toffeelive.com//qnv835oBcqxnFHJBuQcB/posters/348dfac3-c1e0-485d-a72b-3d282c9e2c73.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/channel_i/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
+    "name": "ATN Bangla",
+    "logo": "https://assets-prod.services.toffeelive.com//NCLx35oBEef-9-uVh-Dg/posters/af9773c7-7971-41a2-9b78-121fcb240c48.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/atn_bangla/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
+    "name": "ATN News",
+    "logo": "https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/PS_La5oBNnOkwJLWLRN_/posters/e8c444fd-ee3b-4bf3-bb0a-f969bc295f82.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/atn_news/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
+    "name": "Ekhon TV",
+    "logo": "https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/o3v235oBcqxnFHJBkAdC/posters/159af631-796d-4342-a2a7-c272f32bcd32.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/ekhon_tv/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
+    "name": "Jamuna TV",
+    "logo": "https://assets-prod.services.toffeelive.com//PiL635oBEef-9-uV2uCe/posters/36f380e0-6c71-4b27-a73b-2afb3ce7e982.png",
+    "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/jamuna_tv/playlist.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Bangladeshi",
     "name": "Ekattor TV",
     "logo": "https://assets-prod.services.toffeelive.com/w_320,q_75,f_webp/PS_La5oBNnOkwJLWLRN_/posters/e8c444fd-ee3b-4bf3-bb0a-f969bc295f82.png",
     "link": "https://bldcmprod-cdn.toffeelive.com/cdn/live/ekattor_tv/playlist.m3u8",
@@ -37,8 +72,22 @@
   {
     "category_name": "Premium",
     "name": "BFL | Live 1",
-    "logo": "https://assets-prod.services.toffeelive.com/HHnAgJkBcqxnFHJBabwO/posters/a2cabad4-ab24-4cd3-80ef-ffd74a016393.png",
+    "logo": "https://assets-prod.services.toffeelive.com//MXnGgJkBcqxnFHJBILyR/posters/12612af0-8093-458f-b2d5-42e2f0276624.png",
     "link": "https://mprod-cdn.toffeelive.com/live/match-11/index.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Premium",
+    "name": "BFL | Live 2",
+    "logo": "https://assets-prod.services.toffeelive.com//MXnGgJkBcqxnFHJBILyR/posters/12612af0-8093-458f-b2d5-42e2f0276624.png",
+    "link": "https://mprod-cdn.toffeelive.com/live/match-12/index.m3u8",
+    "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
+  },
+  {
+    "category_name": "Premium",
+    "name": "BFL | Live 3",
+    "logo": "https://assets-prod.services.toffeelive.com//LnlKhJkBcqxnFHJBU8GM/posters/74e6a7bb-f850-4ec5-991f-7a882b04db37.png",
+    "link": "https://mprod-cdn.toffeelive.com/live/match-13/index.m3u8",
     "cookie": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1751642601:KeyName=prod_linear:Signature=EIs05hM-NUg_BxiUpv1VdatS93yZB6gl9asaO-nwbAoZcgAxCcN38kBZkB5cQ-TLXTAjg9w9eb05vdOmlC2xDQ"
   },
   {
