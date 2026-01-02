@@ -1,4 +1,4 @@
 {
-  "toffee": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1767531054:KeyName=prod_linear:Signature=T7i2mVEy02VDFMVtjyOg-zsGuoK2BmIQP-EGMpwRdr75aUknhOXZWWhvZhXb54d2nR6S4sAO2I4rAwUvMIYMBg",
-  "epl": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1767408654:KeyName=prod_live_events:Signature=JE6ujU5IOab6mSRD063jDZhIgFMTRtfDT3p2dAYtnS67jjnUszWam2wndFbdpidNQYu5BqY-_PJ_TKGWgm9xBw"
+  "toffee": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9ibGRjbXByb2QtY2RuLnRvZmZlZWxpdmUuY29t:Expires=1767533720:KeyName=prod_linear:Signature=eMDFVzlWFPmK14rVTwUAan8wDuhN8ASiW87TPzxVhoWQf27uqTh9eBxs0l09kOCU1yjZYm5n7Yc1TlauZk0EAw",
+  "epl": "Edge-Cache-Cookie=URLPrefix=aHR0cHM6Ly9tcHJvZC1jZG4udG9mZmVlbGl2ZS5jb20:Expires=1767411320:KeyName=prod_live_events:Signature=ClHyMuJBfyDiOcSz1nq8g4Y-AzlsuN3YhsSHEi_YkL-KdSPi-9UpKOXajkW5WRxfCN2LnvQxWLd44XWHmwiHAA"
 }
