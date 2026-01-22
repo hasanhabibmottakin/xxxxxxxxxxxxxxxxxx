@@ -60,7 +60,12 @@ jobs:
                       })
 
                       ns_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
-                      ott_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n{l}|cookie={ck}\n'
+                      
+                      # Kodi Type Structure for ott.m3u
+                      ott_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n'
+                      ott_str += f'#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n'
+                      ott_str += f'#EXTVLCOPT:http-cookie={ck}\n'
+                      ott_str += f'{l}\n'
 
                   tengo['channels_amount'] = len(v_list)
 
