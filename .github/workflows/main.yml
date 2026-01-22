@@ -2,14 +2,15 @@ name: Toffee Cookie Auto Update
 
 on:
   schedule:
-    - cron: '0 */5 * * *'
-  workflow_dispatch: 
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -24,61 +25,105 @@ jobs:
 
       - name: Execute Update
         run: |
-          python3 -c "
-          import requests, json, datetime, os
-          def run():
-              try:
-                  res = requests.get('https://apis.allinonedev.top/tf/')
-                  ck = res.json().get('set_cookie', '')
-                  if not ck or not os.path.exists('api.json'): return
-                  
-                  with open('api.json', 'r') as f: channels = json.load(f)
-                  
-                  ns_json, ns_playlist, ott_playlist = [], '#EXTM3U\n', '#EXTM3U\n'
-                  u_time = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
-                  
-                  t_json = {
-                      'name': 'Toffee App All Channel Link with Headers',
-                      'owner': 'Bd Coder Boy \nTelegram: https://t.me/fredflixceo',
-                      'channels_amount': 0,
-                      'updated_on': u_time,
-                      'channels': []
-                  }
+          python3 - << 'EOF'
+          import requests, json, datetime, os, sys
 
-                  for ch in channels:
-                      l = ch.get('link', '')
-                      if not l: continue
-                      n, lo, ct = ch.get('name', 'Live'), ch.get('logo', ''), ch.get('category_name', 'Premium')
-                      h = l.split('//')[-1].split('/')[0] if '//' in l else ''
-                      
-                      ns_json.append({'name': n, 'logo': lo, 'link': l, 'cookie': ck})
-                      
-                      t_json['channels'].append({
-                          'category_name': ct, 'name': n, 'link': l,
-                          'headers': {'Host': h, 'cookie': ck, 'user-agent': 'Toffee (Linux;Android 14)', 'accept-encoding': 'gzip'},
-                          'logo': lo
-                      })
+          API_URL = "https://apis.allinonedev.top/tf/"
+          SRC_JSON = "api.json"
 
-                      ns_playlist += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
-                      
-                      ott_playlist += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
+          try:
+     
+              r = requests.get(API_URL, timeout=15)
+              ck = r.json().get("set_cookie", "")
+              if not ck:
+                  print("No cookie received")
+                  sys.exit(0)
 
-                  t_json['channels_amount'] = len(ns_json)
+              if not os.path.exists(SRC_JSON):
+                  print("api.json missing")
+                  sys.exit(0)
 
-                  with open('ns.m3u', 'w') as f:
-                      f.write(json.dumps(ns_json, indent=2) + '\n\n' + ns_playlist)
-                  
-                  with open('tengo.json', 'w') as f: json.dump(t_json, f, indent=2)
-                  with open('ott.m3u', 'w') as f: f.write(ott_playlist)
-                  with open('channels.json', 'w') as f: json.dump(ns_json, f, indent=2)
-              except: pass
-          run()
-          "
+         
+              with open(SRC_JSON, "r", encoding="utf-8") as f:
+                  channels = json.load(f)
+
+              ns_json = []
+              ott_playlist = "#EXTM3U\n"
+
+              updated = datetime.datetime.now().strftime("%d-%m-%Y %I:%M:%S %p")
+
+              tengo = {
+                  "name": "Toffee App All Channel Link with Headers",
+                  "owner": "Bd Coder Boy\nTelegram: https://t.me/fredflixceo",
+                  "channels_amount": 0,
+                  "updated_on": updated,
+                  "channels": []
+              }
+
+              for ch in channels:
+                  link = ch.get("link")
+                  if not link:
+                      continue
+
+                  name = ch.get("name", "Live")
+                  logo = ch.get("logo", "")
+                  cat  = ch.get("category_name", "Bangladeshi")
+                  host = link.split("//")[-1].split("/")[0]
+
+           
+                  ns_json.append({
+                      "name": name,
+                      "logo": logo,
+                      "link": link,
+                      "cookie": ck
+                  })
+
+       
+                  tengo["channels"].append({
+                      "category_name": cat,
+                      "name": name,
+                      "link": link,
+                      "logo": logo,
+                      "headers": {
+                          "Host": host,
+                          "Cookie": ck,
+                          "User-Agent": "Toffee (Linux;Android 14)",
+                          "Accept-Encoding": "gzip"
+                      }
+                  })
+
+               
+                  ott_playlist += f'''#EXTINF:-1 group-title="{cat}" tvg-logo="{logo}", {name}
+          #EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)
+          #EXTVLCOPT:http-cookie={ck}
+          {link}
+          '''
+
+              tengo["channels_amount"] = len(ns_json)
+
+          
+              with open("ns.m3u", "w", encoding="utf-8") as f:
+                  json.dump(ns_json, f, indent=2)
+
+              with open("channels.json", "w", encoding="utf-8") as f:
+                  json.dump(ns_json, f, indent=2)
+
+              with open("ott.m3u", "w", encoding="utf-8") as f:
+                  f.write(ott_playlist)
+
+              with open("tengo.json", "w", encoding="utf-8") as f:
+                  json.dump(tengo, f, indent=2)
+
+              print("Update completed successfully")
+
+          except Exception as e:
+              print("ERROR:", e)
+          EOF
 
       - name: Push Changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "Update $(date)" || exit 0
-          git push
+          git commit -m "Auto update $(date)" || exit 0
+          git push origin main
