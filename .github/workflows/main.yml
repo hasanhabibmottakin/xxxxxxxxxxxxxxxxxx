@@ -34,14 +34,14 @@ jobs:
                   
                   with open('api.json', 'r') as f: channels = json.load(f)
                   
-                  ns_json_list, ns_m3u_str, ott_str = [], '', '#EXTM3U\n'
-                  updated_time = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
+                  ns_json, ns_playlist, ott_playlist = [], '#EXTM3U\n', '#EXTM3U\n'
+                  u_time = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
                   
-                  tengo = {
+                  t_json = {
                       'name': 'Toffee App All Channel Link with Headers',
                       'owner': 'Bd Coder Boy \nTelegram: https://t.me/fredflixceo',
                       'channels_amount': 0,
-                      'updated_on': updated_time,
+                      'updated_on': u_time,
                       'channels': []
                   }
 
@@ -51,34 +51,26 @@ jobs:
                       n, lo, ct = ch.get('name', 'Live'), ch.get('logo', ''), ch.get('category_name', 'Premium')
                       h = l.split('//')[-1].split('/')[0] if '//' in l else ''
                       
-                      ns_json_list.append({
-                          'name': n,
-                          'logo': lo,
-                          'link': l,
-                          'cookie': ck
-                      })
+                      ns_json.append({'name': n, 'logo': lo, 'link': l, 'cookie': ck})
                       
-                      tengo['channels'].append({
+                      t_json['channels'].append({
                           'category_name': ct, 'name': n, 'link': l,
                           'headers': {'Host': h, 'cookie': ck, 'user-agent': 'Toffee (Linux;Android 14)', 'accept-encoding': 'gzip'},
                           'logo': lo
                       })
 
-                      ns_m3u_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
+                      ns_playlist += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
                       
-                      ott_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n'
-                      ott_str += f'#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n'
-                      ott_str += f'#EXTVLCOPT:http-cookie={ck}\n'
-                      ott_str += f'{l}\n'
+                      ott_playlist += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
 
-                  tengo['channels_amount'] = len(ns_json_list)
+                  t_json['channels_amount'] = len(ns_json)
 
                   with open('ns.m3u', 'w') as f:
-                      f.write(json.dumps(ns_json_list, indent=2) + '\n\n#EXTM3U\n' + ns_m3u_str)
+                      f.write(json.dumps(ns_json, indent=2) + '\n\n' + ns_playlist)
                   
-                  with open('tengo.json', 'w') as f: json.dump(tengo, f, indent=2)
-                  with open('ott.m3u', 'w') as f: f.write(ott_str)
-                  with open('channels.json', 'w') as f: json.dump(ns_json_list, f, indent=2)
+                  with open('tengo.json', 'w') as f: json.dump(t_json, f, indent=2)
+                  with open('ott.m3u', 'w') as f: f.write(ott_playlist)
+                  with open('channels.json', 'w') as f: json.dump(ns_json, f, indent=2)
               except: pass
           run()
           "
