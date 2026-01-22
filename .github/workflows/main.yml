@@ -1,54 +1,86 @@
-name: Auto-generate Toffee Files
+name: Toffee Auto Update
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   ে
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    - cron: '0 */5 * * *'
+  workflow_dispatch: 
 
 jobs:
-  build:
+  update_links:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
- 
-      - name: Install dependencies
+      - name: Get Cookie and Update Files
         run: |
-          python -m pip install --upgrade pip
-          pip install requests Flask pyzipper==0.3.6
 
-      # 4️⃣ Extract protected app.zip
-      - name: Extract protected app.zip
-        env:
-          ZIP_PWD: ${{ secrets.ZIP_PWD }}
+          COOKIE=$(curl -s https://apis.allinonedev.top/tf/ | jq -r '.set_cookie')
+          echo "New Cookie: $COOKIE"
+
+          if [ -z "$COOKIE" ] || [ "$COOKIE" == "null" ]; then
+            echo "Cookie found empty. Exiting..."
+            exit 1
+          fi
+
+        
+          python3 -c "
+import json, datetime
+with open('api.json', 'r') as f:
+    channels = json.load(f)
+
+new_cookie = '$COOKIE'
+updated_on = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
+
+
+tengo = {
+    'name': 'Toffee App All Channel Link with Headers',
+    'owner': 'Bd Coder Boy \nTelegram: https://t.me/fredflixceo',
+    'channels_amount': len(channels),
+    'updated_on': updated_on,
+    'channels': []
+}
+
+ns_m3u_content = json.dumps([{**ch, 'cookie': new_cookie} for ch in channels], indent=2) + '\n\n#EXTM3U\n'
+ott_m3u_content = '#EXTM3U\n'
+
+for ch in channels:
+    host = ch['link'].split('//')[-1].split('/')[0]
+    
+  
+    tengo['channels'].append({
+        'category_name': ch['category_name'],
+        'name': ch['name'],
+        'link': ch['link'],
+        'headers': {
+            'Host': host,
+            'cookie': new_cookie,
+            'user-agent': 'Toffee (Linux;Android 14)',
+            'accept-encoding': 'gzip'
+        },
+        'logo': ch['logo']
+    })
+
+    
+    ns_m3u_content += f'#EXTINF:-1 group-title=\"{ch[\"category_name\"]}\" tvg-logo=\"{ch[\"logo\"]}\", {ch[\"name\"]}\n'
+    ns_m3u_content += f'#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n'
+    ns_m3u_content += f'#EXTVLCOPT:http-cookie={new_cookie}\n{ch[\"link\"]}\n'
+
+    
+    ott_m3u_content += f'#EXTINF:-1 group-title=\"{ch[\"category_name\"]}\" tvg-logo=\"{ch[\"logo\"]}\", {ch[\"name\"]}\n'
+    ott_m3u_content += f'{ch[\"link\"]}|cookie={new_cookie}\n'
+
+
+with open('tengo.json', 'w') as f: json.dump(tengo, f, indent=2)
+with open('ns.m3u', 'w') as f: f.write(ns_m3u_content)
+with open('ott.m3u', 'w') as f: f.write(ott_m3u_content)
+with open('channels.json', 'w') as f: json.dump([{**ch, 'cookie': new_cookie} for ch in channels], f, indent=2)
+          "
+
+      - name: Commit and Push
         run: |
-          python run.py
-
-
-      - name: Run app.py
-        run: |
-          python app.py
-
-   
-      - name: Commit and push changes
-        env:
-          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
-          git add cookie.json ns.m3u ott.m3u channels.json tengo.json || true
-          git commit -m "Auto update all data $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          git push https://x-access-token:${GIT_TOKEN}@github.com/${{ github.repository }} HEAD:main
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ns.m3u ott.m3u channels.json tengo.json
+          git commit -m "Auto Update: $(date)" || echo "No changes"
+          git push
