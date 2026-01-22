@@ -1,113 +1,81 @@
-name: Toffee Auto Update Fix
+name: Toffee Link Auto Update
 
 on:
   schedule:
-    - cron: '0 */5 * * *' # প্রতি ৫ ঘণ্টা পরপর
+    - cron: '0 */5 * * *'
   workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install Requests
         run: pip install requests
 
-      - name: Generate Files
+      - name: Execute Update
         run: |
           python3 -c "
           import requests, json, datetime, os
-          
-          try:
-              # ১. কুকি আনা
-              res = requests.get('https://apis.allinonedev.top/tf/')
-              new_cookie = res.json().get('set_cookie', '')
-              
-              if not new_cookie:
-                  print('Cookie not found from API!')
-                  exit(1)
-
-              # ২. api.json চেক করা
-              if not os.path.exists('api.json'):
-                  print('api.json file missing in repository!')
-                  exit(1)
-
-              with open('api.json', 'r') as f:
-                  channels = json.load(f)
-
-              updated_on = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
-              
-              tengo = {
-                  'name': 'Toffee App All Channel Link with Headers',
-                  'owner': 'Bd Coder Boy \nTelegram: https://t.me/fredflixceo',
-                  'channels_amount': 0,
-                  'updated_on': updated_on,
-                  'channels': []
-              }
-
-              valid_channels = []
-              ns_m3u = ''
-              ott_m3u = '#EXTM3U\n'
-
-              for ch in channels:
-                  # ডাটা চেক: যদি নাম বা লিংক না থাকে তবে স্কিপ করবে
-                  name = ch.get('name', 'Unknown Channel')
-                  link = ch.get('link', '')
-                  logo = ch.get('logo', '')
-                  cat = ch.get('category_name', 'General') # category_name না থাকলে General ধরবে
-
-                  if not link:
-                      continue
+          def run():
+              try:
+                  res = requests.get('https://apis.allinonedev.top/tf/')
+                  ck = res.json().get('set_cookie', '')
+                  if not ck or not os.path.exists('api.json'): return
                   
-                  valid_channels.append({**ch, 'cookie': new_cookie})
-                  host = link.split('//')[-1].split('/')[0] if '//' in link else 'mprod-cdn.toffeelive.com'
+                  with open('api.json', 'r') as f: channels = json.load(f)
                   
-                  # Tengo Structure
-                  tengo['channels'].append({
-                      'category_name': cat,
-                      'name': name,
-                      'link': link,
-                      'headers': {
-                          'Host': host,
-                          'cookie': new_cookie,
-                          'user-agent': 'Toffee (Linux;Android 14)',
-                          'accept-encoding': 'gzip'
-                      },
-                      'logo': logo
-                  })
-
-                  # NS.M3U (Custom Format)
-                  ns_m3u += f'#EXTINF:-1 group-title=\"{cat}\" tvg-logo=\"{logo}\", {name}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={new_cookie}\n{link}\n'
+                  v_list, ns_str, ott_str = [], '', '#EXTM3U\n'
+                  updated_time = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
                   
-                  # OTT.M3U
-                  ott_m3u += f'#EXTINF:-1 group-title=\"{cat}\" tvg-logo=\"{logo}\", {name}\n{link}|cookie={new_cookie}\n'
+                  tengo = {
+                      'name': 'Toffee App All Channel Link with Headers',
+                      'owner': 'Bd Coder Boy \nTelegram: https://t.me/fredflixceo',
+                      'channels_amount': 0,
+                      'updated_on': updated_time,
+                      'channels': []
+                  }
 
-              tengo['channels_amount'] = len(tengo['channels'])
-              ns_final = json.dumps(valid_channels, indent=2) + '\n\n#EXTM3U\n' + ns_m3u
+                  for ch in channels:
+                      l = ch.get('link', '')
+                      if not l: continue
+                      n, lo, ct = ch.get('name', 'Live'), ch.get('logo', ''), ch.get('category_name', 'Premium')
+                      h = l.split('//')[-1].split('/')[0] if '//' in l else ''
+                      
+                      v_list.append({**ch, 'cookie': ck})
+                      
+                      tengo['channels'].append({
+                          'category_name': ct, 'name': n, 'link': l,
+                          'headers': {'Host': h, 'cookie': ck, 'user-agent': 'Toffee (Linux;Android 14)', 'accept-encoding': 'gzip'},
+                          'logo': lo
+                      })
 
-              # ৩. ফাইল রাইট করা
-              with open('tengo.json', 'w') as f: json.dump(tengo, f, indent=2)
-              with open('ns.m3u', 'w') as f: f.write(ns_final)
-              with open('ott.m3u', 'w') as f: f.write(ott_m3u)
-              with open('channels.json', 'w') as f: json.dump(valid_channels, f, indent=2)
-              
-              print(f'Successfully updated {len(valid_channels)} channels!')
-          except Exception as e:
-              print(f'Critical Error: {e}')
-              exit(1)
+                      ns_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
+                      ott_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n{l}|cookie={ck}\n'
+
+                  tengo['channels_amount'] = len(v_list)
+
+                  with open('tengo.json', 'w') as f: json.dump(tengo, f, indent=2)
+                  with open('ns.m3u', 'w') as f: f.write(json.dumps(v_list, indent=2) + '\n\n#EXTM3U\n' + ns_str)
+                  with open('ott.m3u', 'w') as f: f.write(ott_str)
+                  with open('channels.json', 'w') as f: json.dump(v_list, f, indent=2)
+              except: pass
+          run()
           "
 
-      - name: Commit and Push
+      - name: Push Changes
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "Auto Update: $(date)" || echo "No changes"
+          git commit -m "Update $(date)" || exit 0
           git push
