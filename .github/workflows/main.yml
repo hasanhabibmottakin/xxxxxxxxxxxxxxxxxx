@@ -34,7 +34,7 @@ jobs:
                   
                   with open('api.json', 'r') as f: channels = json.load(f)
                   
-                  v_list, ns_str, ott_str = [], '', '#EXTM3U\n'
+                  ns_json_list, ns_m3u_str, ott_str = [], '', '#EXTM3U\n'
                   updated_time = datetime.datetime.now().strftime('%d-%m-%Y %I:%M:%S %p')
                   
                   tengo = {
@@ -51,7 +51,12 @@ jobs:
                       n, lo, ct = ch.get('name', 'Live'), ch.get('logo', ''), ch.get('category_name', 'Premium')
                       h = l.split('//')[-1].split('/')[0] if '//' in l else ''
                       
-                      v_list.append({**ch, 'cookie': ck})
+                      ns_json_list.append({
+                          'name': n,
+                          'logo': lo,
+                          'link': l,
+                          'cookie': ck
+                      })
                       
                       tengo['channels'].append({
                           'category_name': ct, 'name': n, 'link': l,
@@ -59,20 +64,21 @@ jobs:
                           'logo': lo
                       })
 
-                      ns_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
+                      ns_m3u_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n#EXTVLCOPT:http-cookie={ck}\n{l}\n'
                       
-                      # Kodi Type Structure for ott.m3u
                       ott_str += f'#EXTINF:-1 group-title=\"{ct}\" tvg-logo=\"{lo}\", {n}\n'
                       ott_str += f'#EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)\n'
                       ott_str += f'#EXTVLCOPT:http-cookie={ck}\n'
                       ott_str += f'{l}\n'
 
-                  tengo['channels_amount'] = len(v_list)
+                  tengo['channels_amount'] = len(ns_json_list)
 
+                  with open('ns.m3u', 'w') as f:
+                      f.write(json.dumps(ns_json_list, indent=2) + '\n\n#EXTM3U\n' + ns_m3u_str)
+                  
                   with open('tengo.json', 'w') as f: json.dump(tengo, f, indent=2)
-                  with open('ns.m3u', 'w') as f: f.write(json.dumps(v_list, indent=2) + '\n\n#EXTM3U\n' + ns_str)
                   with open('ott.m3u', 'w') as f: f.write(ott_str)
-                  with open('channels.json', 'w') as f: json.dump(v_list, f, indent=2)
+                  with open('channels.json', 'w') as f: json.dump(ns_json_list, f, indent=2)
               except: pass
           run()
           "
