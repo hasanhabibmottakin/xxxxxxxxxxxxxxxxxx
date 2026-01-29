@@ -2,7 +2,8 @@ name: Toffee Cookie Auto Update
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -32,29 +33,30 @@ jobs:
           SRC_JSON = "api.json"
 
           try:
-     
+              # Requesting the API
               r = requests.get(API_URL, timeout=15)
               ck = r.json().get("set_cookie", "")
+              
               if not ck:
                   print("No cookie received")
                   sys.exit(0)
 
               if not os.path.exists(SRC_JSON):
-                  print("api.json missing")
-                  sys.exit(0)
-
-         
-              with open(SRC_JSON, "r", encoding="utf-8") as f:
-                  channels = json.load(f)
+                  # If api.json doesn't exist, try to create an empty list or exit
+                  print("api.json missing, creating empty list")
+                  channels = [] 
+                  # sys.exit(0) # Commented out to prevent stop if file missing
+              else:
+                  with open(SRC_JSON, "r", encoding="utf-8") as f:
+                      channels = json.load(f)
 
               ns_json = []
               ott_playlist = "#EXTM3U\n"
-
               updated = datetime.datetime.now().strftime("%d-%m-%Y %I:%M:%S %p")
 
               tengo = {
                   "name": "Toffee App All Channel Link with Headers",
-                  "owner": "Bd Coder Boy\nTelegram: https://t.me/fredflixceo",
+                  "owner": "Bd Coder Boy\nTelegram: https://t.me/codecrafterceo",
                   "channels_amount": 0,
                   "updated_on": updated,
                   "channels": []
@@ -68,9 +70,13 @@ jobs:
                   name = ch.get("name", "Live")
                   logo = ch.get("logo", "")
                   cat  = ch.get("category_name", "Bangladeshi")
-                  host = link.split("//")[-1].split("/")[0]
+                  
+                  # Host parsing safety
+                  try:
+                      host = link.split("//")[-1].split("/")[0]
+                  except:
+                      host = ""
 
-           
                   ns_json.append({
                       "name": name,
                       "logo": logo,
@@ -78,7 +84,6 @@ jobs:
                       "cookie": ck
                   })
 
-       
                   tengo["channels"].append({
                       "category_name": cat,
                       "name": name,
@@ -92,7 +97,6 @@ jobs:
                       }
                   })
 
-               
                   ott_playlist += f'''#EXTINF:-1 group-title="{cat}" tvg-logo="{logo}", {name}
           #EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)
           #EXTVLCOPT:http-cookie={ck}
@@ -101,7 +105,6 @@ jobs:
 
               tengo["channels_amount"] = len(ns_json)
 
-          
               with open("ns.m3u", "w", encoding="utf-8") as f:
                   json.dump(ns_json, f, indent=2)
 
@@ -118,6 +121,7 @@ jobs:
 
           except Exception as e:
               print("ERROR:", e)
+              sys.exit(1) # Fail the workflow on error
           EOF
 
       - name: Push Changes
@@ -125,5 +129,4 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
-          git commit -m "Auto update $(date)" || exit 0
-          git push origin main
+          git diff-index --quiet HEAD || (git commit -m "Auto update $(date)" && git push origin main)
