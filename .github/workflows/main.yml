@@ -2,7 +2,6 @@ name: Toffee Cookie Auto Update
 
 on:
   schedule:
-
     - cron: '0 * * * *'
   workflow_dispatch:
 
@@ -33,7 +32,6 @@ jobs:
           SRC_JSON = "api.json"
 
           try:
-              # Requesting the API
               r = requests.get(API_URL, timeout=15)
               ck = r.json().get("set_cookie", "")
               
@@ -42,15 +40,13 @@ jobs:
                   sys.exit(0)
 
               if not os.path.exists(SRC_JSON):
-                  # If api.json doesn't exist, try to create an empty list or exit
-                  print("api.json missing, creating empty list")
                   channels = [] 
-                  # sys.exit(0) # Commented out to prevent stop if file missing
               else:
                   with open(SRC_JSON, "r", encoding="utf-8") as f:
                       channels = json.load(f)
 
               ns_json = []
+              tocket_json = []
               ott_playlist = "#EXTM3U\n"
               updated = datetime.datetime.now().strftime("%d-%m-%Y %I:%M:%S %p")
 
@@ -70,8 +66,8 @@ jobs:
                   name = ch.get("name", "Live")
                   logo = ch.get("logo", "")
                   cat  = ch.get("category_name", "Bangladeshi")
+                  epg_id = ch.get("epg_id", "")
                   
-                  # Host parsing safety
                   try:
                       host = link.split("//")[-1].split("/")[0]
                   except:
@@ -97,6 +93,16 @@ jobs:
                       }
                   })
 
+                  tocket_json.append({
+                      "category": cat,
+                      "tvg_id": epg_id,
+                      "name": name,
+                      "link": link,
+                      "logo": logo,
+                      "cookie": ck,
+                      "user_agent": "okhttp/4.11.0"
+                  })
+
                   ott_playlist += f'''#EXTINF:-1 group-title="{cat}" tvg-logo="{logo}", {name}
           #EXTVLCOPT:http-user-agent=Toffee (Linux;Android 14)
           #EXTVLCOPT:http-cookie={ck}
@@ -117,11 +123,14 @@ jobs:
               with open("tengo.json", "w", encoding="utf-8") as f:
                   json.dump(tengo, f, indent=2)
 
-              print("Update completed successfully")
+              with open("tocket.json", "w", encoding="utf-8") as f:
+                  json.dump(tocket_json, f, indent=2)
+
+              print("Update completed successfully. tocket.json has been created.")
 
           except Exception as e:
               print("ERROR:", e)
-              sys.exit(1) # Fail the workflow on error
+              sys.exit(1)
           EOF
 
       - name: Push Changes
