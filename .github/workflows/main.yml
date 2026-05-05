@@ -28,7 +28,7 @@ jobs:
           python3 - << 'EOF'
           import requests, json, datetime, os, sys
 
-          API_URL = "https://apis.allinonedev.top/tf/"
+          API_URL = "https://apis.allinonedev.top/tf/index.php"
           SRC_JSON = "api.json"
 
           try:
